@@ -3,6 +3,6 @@ name: KillGiveItem
 api: [1.12.0]
 version: 1.0.0
 load: POSTWORLD
-main: musaichi\kgi.php
+main: musaichi\KGI.php
 author: musaichi
 website: http://www.musaichi.tk
