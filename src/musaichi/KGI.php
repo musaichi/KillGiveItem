@@ -15,8 +15,10 @@ class KGI extends pluginBase{
     mkdir($this->getDataFolder(), 0744, true);//なければフォルダを作成
 }
    $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML array(
-        "test" => "data",
-        "データ名(キー)" => "値",
+    "GM" => "you are winner!Item given!",
+    "ItemId" => "1",
+    "ItemMeta" => "0",
+    "ItemNumber" => "1",
 ));
    $this->getLogger()->info("KillGiveItem now loading...made by musaichiJP")
   }
@@ -25,7 +27,13 @@ class KGI extends pluginBase{
   }
   public function PlayerDeathEvent(PlayerDeathEvent $event){
    if($event instanceof PlayerDeathEvent){
-    $item = Item::get(1, 0, 1)
-    $killer = $event->getKiller();//ころしたひと
-    $killer->sendPopup("you are winner!gived item $item ")
-    
+    $id = $this->config->get("ItemID")
+    $meta = $this->config->get("ItemMeta")
+    $Number = $this->config->get("ItemNumber")
+    $message = $this->config->get("GM");
+    $killer = $event->getKiller();
+    $item = Item::get($ItemID, $ItemMeta, $ItemNumber);
+    $killer->sendPopup("$message");
+  }
+ }
+}
