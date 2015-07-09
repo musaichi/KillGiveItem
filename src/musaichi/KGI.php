@@ -32,7 +32,7 @@ class KGI extends pluginBase{
     $Number = $this->config->get("ItemNumber")
     $message = $this->config->get("GM");
     $killer = $event->getKiller();
-    $item = Item::get($ItemID, $ItemMeta, $ItemNumber);
+    $killer->Item::get( $ItemID , $ItemMeta , $ItemNumber );
     $killer->sendPopup("$message");
   }
  }
