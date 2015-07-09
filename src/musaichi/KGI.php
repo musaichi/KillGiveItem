@@ -15,4 +15,9 @@ class KGI extends pluginBase{
   public function onLoad(){
    $this->getLogger()->info("done!Please enjoy this plugin life!")
   }
-  public function PlayerDeathEvent(PlayerDeathEvent $event)
+  public function PlayerDeathEvent(PlayerDeathEvent $event){
+   if($event instanceof PlayerDeathEvent){
+    $item = 
+    $killer = $event->getKiller();//ころしたひと
+    $killer->sendPopup("you are winner!gived item $item ")
+    
