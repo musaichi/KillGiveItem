@@ -1,4 +1,4 @@
-<?php
+K<?php
 namespace KGI
 
 use pocketmine\plugin\PluginBase;
@@ -34,7 +34,7 @@ class KGI extends pluginBase{
     $Number = $this->config->get("ItemNumber")
     $message = $this->config->get("GM");
     $killer = $event->getKiller();
-    $killer->Item::get($ItemID ,$ItemMeta ,$ItemNumber );
+    $killer->Item::get($id ,$meta ,$Number );
     $killer->sendPopup("$message");
   }
  }
