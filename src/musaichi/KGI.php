@@ -7,6 +7,8 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\player;
 use pocketmine\utils\textFormat;
 use pocketmine\utils\Config;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 
 class KGI extends pluginBase{
 
@@ -35,5 +37,15 @@ class KGI extends pluginBase{
     $killer->Item::get( $ItemID , $ItemMeta , $ItemNumber );
     $killer->sendPopup("$message");
   }
+ }
+ public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+  switch (strtolower($command->getName())) {
+   case "reloadK":
+    $this->reloadConfig()
+    $sender->sendMessage("config.yml reloaded!");
+    return true;//処理を終了
+    break;
+  }
+  return false;
  }
 }
