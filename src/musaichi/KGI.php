@@ -34,7 +34,7 @@ class KGI extends pluginBase{
     $Number = $this->config->get("ItemNumber")
     $message = $this->config->get("GM");
     $killer = $event->getKiller();
-    $killer->Item::get( $ItemID , $ItemMeta , $ItemNumber );
+    $killer->Item::get($ItemID ,$ItemMeta ,$ItemNumber );
     $killer->sendPopup("$message");
   }
  }
@@ -42,7 +42,7 @@ class KGI extends pluginBase{
   switch (strtolower($command->getName())) {
    case "reloadK":
     $this->reloadConfig()
-    $sender->sendMessage("config.yml reloaded!");
+    $sender->sendPopup("config.yml reloaded!");
     return true;//処理を終了
     break;
   }
