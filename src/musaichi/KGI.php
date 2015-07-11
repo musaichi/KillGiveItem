@@ -4,6 +4,7 @@ namespace KGI
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\Item;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\player;
 use pocketmine\utils\textFormat;
 use pocketmine\utils\Config;
@@ -28,22 +29,25 @@ class KGI extends pluginBase{
    $this->getLogger()->info("done!Please enjoy this plugin life!")
   }
   public function PlayerDeathEvent(PlayerDeathEvent $event){
-   if($event instanceof PlayerDeathEvent){
-    $id = $this->config->get("ItemID")
-    $meta = $this->config->get("ItemMeta")
-    $Number = $this->config->get("ItemNumber")
-    $message = $this->config->get("GM");
-    $killer = $event->getKiller();
-    $killer->Item::get($id ,$meta ,$Number );
-    $killer->sendPopup("$message");
+   $entity = $event->getEntity();
+   $cause = $entity->getLastDamageCause();
+   $id = $this->config->get("ItemID")
+   $meta = $this->config->get("ItemMeta")
+   $Number = $this->config->get("ItemNumber")
+   $message = $this->config->get("GM");
+    if($cause instanceof EntityDamageByEntityEvent){
+     $killer = $cause->getDamager()->getPlayer();
+     $killer->Item::get($id ,$meta ,$Number );
+     $killer->sendPopup("$message");
+     return true;
+    }
   }
- }
  public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
   switch (strtolower($command->getName())) {
    case "reloadK":
     $this->reloadConfig()
-    $sender->sendPopup("config.yml reloaded!");
-    return true;//処理を終了
+    $sender->sendPopup("config.yml has reloaded!");
+    return true;
     break;
   }
   return false;
