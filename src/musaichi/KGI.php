@@ -1,5 +1,5 @@
-K<?php
-namespace KGI
+<?php
+namespace KGI;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\Item;
