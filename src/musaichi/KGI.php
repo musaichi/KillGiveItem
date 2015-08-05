@@ -11,7 +11,7 @@ use pocketmine\utils\Config;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 
-class KGI extends pluginBase{
+class KillGiveItem extends pluginBase{
 
   public function onEnable(){
    if(!file_exists($this->getDataFolder())){
