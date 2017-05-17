@@ -23,17 +23,17 @@ class KillGiveItem extends pluginBase{
     "ItemMeta" => "0",
     "ItemNumber" => "1",
 ));
-   $this->getLogger()->info("KillGiveItem now loading...made by musaichiJP")
+   $this->getLogger()->info("KillGiveItem now loading...made by musaichiJP");
   }
   public function onLoad(){
-   $this->getLogger()->info("done!Please enjoy this plugin life!")
+   $this->getLogger()->info("done!Please enjoy this plugin life!");
   }
   public function PlayerDeathEvent(PlayerDeathEvent $event){
    $entity = $event->getEntity();
    $cause = $entity->getLastDamageCause();
-   $id = $this->config->get("ItemID")
-   $meta = $this->config->get("ItemMeta")
-   $Number = $this->config->get("ItemNumber")
+   $id = $this->config->get("ItemID");
+   $meta = $this->config->get("ItemMeta");
+   $Number = $this->config->get("ItemNumber");
    $message = $this->config->get("GM");
     if($cause instanceof EntityDamageByEntityEvent){
      $killer = $cause->getDamager()->getPlayer();
@@ -42,14 +42,4 @@ class KillGiveItem extends pluginBase{
      return true;
     }
   }
- public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
-  switch (strtolower($command->getName())) {
-   case "reloadK":
-    $this->reloadConfig()
-    $sender->sendPopup("config.yml has reloaded!");
-    return true;
-    break;
-  }
-  return false;
- }
 }
